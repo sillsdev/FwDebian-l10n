@@ -1,0 +1,5 @@
+fieldworks-l10n (7.0.6~rc1) unstable; urgency=low
+
+  * Initial release (Closes: FWNX-491).
+
+ -- Stephen McConnel <stephen_mcconnel@sil.org>  Mon, 17 Dec 2012 16:34:47 -0600
