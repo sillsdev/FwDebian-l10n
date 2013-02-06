@@ -1,0 +1,1 @@
+Depends: ${misc:Depends}, ttf-indic-fonts-core, ttf-devanagari-fonts
