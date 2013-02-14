@@ -16,7 +16,6 @@ mkdir -p fieldworks-l10n-$VVV/Bin
 mkdir -p fieldworks-l10n-$VVV/DistFiles
 mkdir -p "fieldworks-l10n-$VVV/DistFiles/Language Explorer/Configuration"
 mkdir -p "fieldworks-l10n-$VVV/DistFiles/Translation Editor"
-mkdir -p fieldworks-l10n-$VVV/DistFiles/Templates
 
 cp -p Bin/abs.py fieldworks-l10n-$VVV/Bin
 cp -p Bin/LocaleStrings.exe fieldworks-l10n-$VVV/Bin
@@ -75,9 +74,6 @@ for xx in $LOCALIZATIONS; do
 		usr/lib/fieldworks/$xx/*.resources.dll usr/lib/fieldworks/$xx
 		usr/share/fieldworks/Language?Explorer/Configuration/strings-$xx.xml
 	EOF
-	if [ -f Localizations/LocalizedLists-$xx.xml ]; then
-	   echo usr/share/fieldworks/Templates/LocalizedLists-$xx.zip>>fieldworks-l10n-$VVV/debian/fieldworks-l10n-$PACKAGETAG.install
-	fi
 done
 
 tar czf fieldworks-l10n_$VVV.orig.tar.gz fieldworks-l10n-$VVV

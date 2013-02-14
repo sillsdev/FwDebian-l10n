@@ -1,6 +1,12 @@
+fieldworks-l10n (7.3.2~alpha2) unstable; urgency=low
+
+  * Move localized lists to the main fieldworks-applications package (Closes: FWNX-912).
+
+ -- Stephen McConnel <stephen_mcconnel@sil.org>  Thu, 14 Feb 2013 15:24:28 -0600
+
 fieldworks-l10n (7.3.2~alpha1) unstable; urgency=low
 
-  * Updated to main development branch using xbuild.
+  * Updated to main development branch using xbuild (Closes: FWNX-917).
 
  -- Stephen McConnel <stephen_mcconnel@sil.org>  Tue, 12 Feb 2013 16:48:46 -0600
 

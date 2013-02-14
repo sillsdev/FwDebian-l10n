@@ -48,7 +48,6 @@ all:
 
 clean:
 	rm -rf $(BUILD_ROOT)/Output
-	rm -f $(BUILD_ROOT)/DistFiles/Templates/LocalizedLists-*.zip
 	# we don't want to remove strings-en.xml!
 	for f in $(LOCALIZATIONS); do \
 	 rm -f "$(BUILD_ROOT)/DistFiles/Language Explorer/Configuration/strings-$$f.xml"; \
@@ -64,7 +63,7 @@ install:
 	 install -d $(DESTDIR)/usr/lib/fieldworks/$$f; \
 	 install -m 644 Output/Release/$$f/*.dll $(DESTDIR)/usr/lib/fieldworks/$$f; \
 	 done
-	cp -dr --preserve=mode,timestamps DistFiles/{"Language Explorer","Translation Editor",Templates} $(DESTDIR)/usr/share/fieldworks
+	cp -dr --preserve=mode,timestamps DistFiles/{"Language Explorer","Translation Editor"} $(DESTDIR)/usr/share/fieldworks
 
 uninstall:
 	rm -rf $(DESTDIR)/usr/lib/fieldworks $(DESTDIR)/usr/share/fieldworks
