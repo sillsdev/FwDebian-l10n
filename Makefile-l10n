@@ -33,22 +33,22 @@ SHELL=/bin/bash
 LOCALIZATIONS := $(shell ls $(BUILD_ROOT)/Localizations/messages.*.po | sed s/^.*messages\.// | sed s/\.po//)
 
 all-release:
-	@if [ ! -f Output_$(ARCH)/Release/zh-CN/xWorks.resources.dll ]; then \
-	 (cd $(BUILD_ROOT) && sh l10nant release); \
+	@if [ ! -f Output/Release/zh-CN/xWorks.resources.dll ]; then \
+	 (cd $(BUILD_ROOT)/Build && xbuild /t:localize /property:config=release); \
 	 else \
 	 echo already built!; \
 	 fi
 
 all:
-	@if [ ! -f Output_$(ARCH)/Debug/zh-CN/xWorks.resources.dll ]; then \
-	 (cd $(BUILD_ROOT) && sh l10nant); \
+	@if [ ! -f Output/Debug/zh-CN/xWorks.resources.dll ]; then \
+	 (cd $(BUILD_ROOT)/Build && xbuild /t:localize); \
 	 else \
 	 echo already built!; \
 	 fi
 
 clean:
-	rm -rf $(BUILD_ROOT)/Output_$(ARCH)
-	rm -f $(BUILD_ROOT)/DistFiles/Templates/LocalizedLists-*.xml
+	rm -rf $(BUILD_ROOT)/Output
+	rm -f $(BUILD_ROOT)/DistFiles/Templates/LocalizedLists-*.zip
 	# we don't want to remove strings-en.xml!
 	for f in $(LOCALIZATIONS); do \
 	 rm -f "$(BUILD_ROOT)/DistFiles/Language Explorer/Configuration/strings-$$f.xml"; \
@@ -62,9 +62,9 @@ install:
 	# Copy data
 	for f in $(LOCALIZATIONS); do \
 	 install -d $(DESTDIR)/usr/lib/fieldworks/$$f; \
-	 install -m 644 Output_$(ARCH)/Release/$$f/*.dll $(DESTDIR)/usr/lib/fieldworks/$$f; \
+	 install -m 644 Output/Release/$$f/*.dll $(DESTDIR)/usr/lib/fieldworks/$$f; \
 	 done
-	cp -dr --preserve=mode DistFiles/{"Language Explorer",Templates} $(DESTDIR)/usr/share/fieldworks
+	cp -dr --preserve=mode,timestamps DistFiles/{"Language Explorer","Translation Editor",Templates} $(DESTDIR)/usr/share/fieldworks
 
 uninstall:
 	rm -rf $(DESTDIR)/usr/lib/fieldworks $(DESTDIR)/usr/share/fieldworks

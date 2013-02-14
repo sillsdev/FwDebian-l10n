@@ -10,24 +10,22 @@ mkdir -p fieldworks-l10n-$VVV
 
 cp -p environ fieldworks-l10n-$VVV/environ
 echo '# localization does not need xulrunner' > fieldworks-l10n-$VVV/environ-xulrunner
-cp -p debian-l10n/l10nant fieldworks-l10n-$VVV/l10nant
 cp -p debian-l10n/Makefile-l10n fieldworks-l10n-$VVV/Makefile
 
 mkdir -p fieldworks-l10n-$VVV/Bin
-mkdir -p fieldworks-l10n-$VVV/Bin/nant
 mkdir -p fieldworks-l10n-$VVV/DistFiles
 mkdir -p "fieldworks-l10n-$VVV/DistFiles/Language Explorer/Configuration"
+mkdir -p "fieldworks-l10n-$VVV/DistFiles/Translation Editor"
 mkdir -p fieldworks-l10n-$VVV/DistFiles/Templates
 
 cp -p Bin/abs.py fieldworks-l10n-$VVV/Bin
 cp -p Bin/LocaleStrings.exe fieldworks-l10n-$VVV/Bin
 cp -p Bin/Po2Xml.exe fieldworks-l10n-$VVV/Bin
 cp -p Bin/ProcessLanguagesBld.exe fieldworks-l10n-$VVV/Bin
-cp -pR Bin/nant/bin fieldworks-l10n-$VVV/Bin/nant
 cp -pR Bld fieldworks-l10n-$VVV
-cp -p DistFiles/BiblicalTerms-en.xml fieldworks-l10n-$VVV/DistFiles
-cp -p DistFiles/strings-en.txt fieldworks-l10n-$VVV/DistFiles
+cp -pR Build fieldworks-l10n-$VVV
 cp -p "DistFiles/Language Explorer/Configuration/strings-en.xml" "fieldworks-l10n-$VVV/DistFiles/Language Explorer/Configuration"
+cp -p "DistFiles/Translation Editor"/BiblicalTerms-*.xml "fieldworks-l10n-$VVV/DistFiles/Translation Editor"
 cp -pR Localizations fieldworks-l10n-$VVV
 cp -pR Src fieldworks-l10n-$VVV
 
@@ -62,7 +60,7 @@ for xx in $LOCALIZATIONS; do
 	if [ -f debian-l10n/$PACKAGETAG.depends ]; then
 		cat debian-l10n/$PACKAGETAG.depends >>fieldworks-l10n-$VVV/debian/control
 	else
-		echo "Depends: \${misc:Depends}">>fieldworks-l10n-$VVV/debian/control
+		echo 'Depends: ${misc:Depends}'>>fieldworks-l10n-$VVV/debian/control
 	fi
 	cat >>fieldworks-l10n-$VVV/debian/control <<-EOF
 		Recommends: fieldworks-applications
@@ -78,7 +76,7 @@ for xx in $LOCALIZATIONS; do
 		usr/share/fieldworks/Language?Explorer/Configuration/strings-$xx.xml
 	EOF
 	if [ -f Localizations/LocalizedLists-$xx.xml ]; then
-	   echo usr/share/fieldworks/Templates/LocalizedLists-$xx.xml>>fieldworks-l10n-$VVV/debian/fieldworks-l10n-$PACKAGETAG.install
+	   echo usr/share/fieldworks/Templates/LocalizedLists-$xx.zip>>fieldworks-l10n-$VVV/debian/fieldworks-l10n-$PACKAGETAG.install
 	fi
 done
 

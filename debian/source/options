@@ -1,6 +1,6 @@
 --diff-ignore
---extend-diff-ignore=Output_.*/.*
+--extend-diff-ignore=Output.*/.*
 --extend-diff-ignore=DistFiles/.*
 --tar-ignore
---tar-ignore=Output_*
+--tar-ignore=Output*
 --tar-ignore=DistFiles

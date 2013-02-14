@@ -1,3 +1,9 @@
+fieldworks-l10n (7.3.2~alpha1) unstable; urgency=low
+
+  * Updated to main development branch using xbuild.
+
+ -- Stephen McConnel <stephen_mcconnel@sil.org>  Tue, 12 Feb 2013 16:48:46 -0600
+
 fieldworks-l10n (7.0.6~rc4) unstable; urgency=low
 
   * Add language specific dependencies for fa, hi, ko, and zh-CN.
