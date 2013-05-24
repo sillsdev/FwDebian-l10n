@@ -1,1 +1,1 @@
-Depends: ${misc:Depends}, ttf-wqy-zenhei, fonts-arphic-uming
+Depends: ${misc:Depends}, ttf-wqy-zenhei, fonts-arphic-uming, fieldworks-applications (= ${binary:Version})

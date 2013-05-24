@@ -1,1 +1,1 @@
-Depends: ${misc:Depends}, ttf-indic-fonts-core, ttf-devanagari-fonts
+Depends: ${misc:Depends}, ttf-indic-fonts-core, ttf-devanagari-fonts, fieldworks-applications (= ${binary:Version})

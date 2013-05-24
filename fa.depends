@@ -1,1 +1,1 @@
-Depends: ${misc:Depends}, fonts-farsiweb
+Depends: ${misc:Depends}, fonts-farsiweb, fieldworks-applications (= ${binary:Version})

@@ -1,1 +1,1 @@
-Depends: ${misc:Depends}, fonts-nanum, fonts-unfonts-core
+Depends: ${misc:Depends}, fonts-nanum, fonts-unfonts-core, fieldworks-applications (= ${binary:Version})

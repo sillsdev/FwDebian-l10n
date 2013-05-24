@@ -59,10 +59,9 @@ for xx in $LOCALIZATIONS; do
 	if [ -f debian-l10n/$PACKAGETAG.depends ]; then
 		cat debian-l10n/$PACKAGETAG.depends >>fieldworks-l10n-$VVV/debian/control
 	else
-		echo 'Depends: ${misc:Depends}'>>fieldworks-l10n-$VVV/debian/control
+		echo 'Depends: ${misc:Depends}, fieldworks-applications (= ${binary:Version})'>>fieldworks-l10n-$VVV/debian/control
 	fi
 	cat >>fieldworks-l10n-$VVV/debian/control <<-EOF
-		Recommends: fieldworks-applications
 		Description: FieldWorks user interface localization into $LANGUAGE.
 		 FieldWorks is a suite of software tools to help language development teams
 		 manage language and cultural data, with support for complex scripts.
@@ -75,8 +74,6 @@ for xx in $LOCALIZATIONS; do
 		usr/share/fieldworks/Language?Explorer/Configuration/strings-$xx.xml
 	EOF
 done
-
-tar czf fieldworks-l10n_$VVV.orig.tar.gz fieldworks-l10n-$VVV
 
 # finally, build the source package
 cd fieldworks-l10n-$VVV
